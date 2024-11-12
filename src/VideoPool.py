@@ -279,7 +279,7 @@ class VideoPool:
 
     def generate_alignments(self):
         self.__generate_alignments_1()
-        self.__generate_alignments_baseline_1()
+        # self.__generate_alignments_baseline_1()
 
     def __cluster_v2(self, items, similarity_threshold, item_to_text_f, summarization_f):
         if len(items) == 0:
