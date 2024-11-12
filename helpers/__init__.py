@@ -11,7 +11,8 @@ client = OpenAI(
     api_key=API_KEY,
 )
 
-SEED = 13774
+# SEED = 13774
+SEED = 13778
 TEMPERATURE = 0
 MODEL_NAME = 'gpt-4o-2024-08-06'
 
