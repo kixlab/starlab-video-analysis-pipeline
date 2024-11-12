@@ -248,34 +248,34 @@ class VideoPool:
                     "video_id": video2.video_id,
                 })
     
-    ### BASELINE 1
-    # def __generate_alignments_baseline_1(self):
-    #     approach = BASELINES[0]
-    #     if len(self.videos) < 2:
-    #         return
-    #     if approach in self.alignment_sets and len(self.alignment_sets[approach]) > 0:
-    #         return
+    ## BASELINE 1
+    def __generate_alignments_baseline_1(self):
+        approach = BASELINES[0]
+        if len(self.videos) < 2:
+            return
+        if approach in self.alignment_sets and len(self.alignment_sets[approach]) > 0:
+            return
         
-    #     self.alignment_sets[approach] = []
-    #     for v1_idx, video1 in enumerate(self.videos):
-    #         for v2_idx, video2 in enumerate(self.videos):
-    #             if v1_idx == v2_idx:
-    #                 continue
-    #             ### between meta
-    #             contents1 = video1.get_all_contents()
-    #             contents2 = video2.get_all_contents()
-    #             if len(contents1) == 0 or len(contents2) == 0:
-    #                 continue
-    #             meta_alignments = get_transcript_alignments_v3(
-    #                 contents1, contents2, self.task
-    #             )
-    #             for alignment in meta_alignments:
-    #                 alignment["subgoal_title"] = META_TITLE
+        self.alignment_sets[approach] = []
+        for v1_idx, video1 in enumerate(self.videos):
+            for v2_idx, video2 in enumerate(self.videos):
+                if v1_idx == v2_idx:
+                    continue
+                ### between meta
+                contents1 = video1.get_all_contents()
+                contents2 = video2.get_all_contents()
+                if len(contents1) == 0 or len(contents2) == 0:
+                    continue
+                meta_alignments = get_transcript_alignments_v3(
+                    contents1, contents2, self.task
+                )
+                for alignment in meta_alignments:
+                    alignment["subgoal_title"] = META_TITLE
 
-    #             self.alignment_sets[approach].append({
-    #                 "alignments": self.__reformat_alignments(meta_alignments, video1, video2),
-    #                 "video_id": video1.video_id,
-    #             })
+                self.alignment_sets[approach].append({
+                    "alignments": self.__reformat_alignments(meta_alignments, video1, video2),
+                    "video_id": video1.video_id,
+                })
 
     def generate_alignments(self):
         self.__generate_alignments_1()
