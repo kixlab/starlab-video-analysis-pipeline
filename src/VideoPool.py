@@ -465,11 +465,11 @@ class VideoPool:
             if f"notables_{approach}" not in self.hooks:
                 self.hooks[f"notables_{approach}"] = self.__generate_notable_v2(self.alignment_sets[approach])
 
-        # for baseline in BASELINES:
-        #     if baseline not in self.alignment_sets:
-        #         continue
-        #     if f"notables_{baseline}" not in self.hooks:
-        #         self.hooks[f"notables_{baseline}"] = self.__generate_notable_v2(self.alignment_sets[baseline])
+        for baseline in BASELINES:
+            if baseline not in self.alignment_sets:
+                continue
+            if f"notables_{baseline}" not in self.hooks:
+                self.hooks[f"notables_{baseline}"] = self.__generate_notable_v2(self.alignment_sets[baseline])
 
     def __generate_hooks_v2(self, root_notables, approach="cluster"): #llm
         links_to = {}
