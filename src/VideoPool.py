@@ -598,8 +598,8 @@ class VideoPool:
             if f"hooks_{approach}" not in self.hooks:
                 self.hooks[f"hooks_{approach}"] = self.__generate_hooks_v2(self.hooks[f"notables_{approach}"])
 
-        for baseline in BASELINES:
-            if f"notables_{baseline}" not in self.hooks:
-                continue
-            if f"hooks_{baseline}" not in self.hooks:
-                self.hooks[f"hooks_{baseline}"] = self.__generate_hooks_v2(self.hooks[f"notables_{baseline}"])
+        # for baseline in BASELINES:
+        #     if f"notables_{baseline}" not in self.hooks:
+        #         continue
+        #     if f"hooks_{baseline}" not in self.hooks:
+        #         self.hooks[f"hooks_{baseline}"] = self.__generate_hooks_v2(self.hooks[f"notables_{baseline}"])
