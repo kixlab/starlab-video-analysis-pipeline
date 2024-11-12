@@ -459,11 +459,11 @@ class VideoPool:
         return notables
     
     def find_notables(self):
-        for approach in APPROACHES:
-            if approach not in self.alignment_sets:
-                continue
-            if f"notables_{approach}" not in self.hooks:
-                self.hooks[f"notables_{approach}"] = self.__generate_notable_v2(self.alignment_sets[approach])
+        # for approach in APPROACHES:
+        #     if approach not in self.alignment_sets:
+        #         continue
+        #     if f"notables_{approach}" not in self.hooks:
+        #         self.hooks[f"notables_{approach}"] = self.__generate_notable_v2(self.alignment_sets[approach])
 
         for baseline in BASELINES:
             if baseline not in self.alignment_sets:
@@ -592,11 +592,11 @@ class VideoPool:
         return all_hooks
 
     def generate_hooks(self):
-        # for approach in APPROACHES:
-        #     if f"notables_{approach}" not in self.hooks:
-        #         continue
-        #     if f"hooks_{approach}" not in self.hooks:
-        #         self.hooks[f"hooks_{approach}"] = self.__generate_hooks_v2(self.hooks[f"notables_{approach}"])
+        for approach in APPROACHES:
+            if f"notables_{approach}" not in self.hooks:
+                continue
+            if f"hooks_{approach}" not in self.hooks:
+                self.hooks[f"hooks_{approach}"] = self.__generate_hooks_v2(self.hooks[f"notables_{approach}"])
 
         for baseline in BASELINES:
             if f"notables_{baseline}" not in self.hooks:
