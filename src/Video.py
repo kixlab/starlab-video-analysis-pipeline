@@ -103,69 +103,6 @@ class Video:
             })
         return contents
 
-    # def get_meta_summary_contents(self, as_context=False) -> list:
-    #     if self.meta_summary is None:
-    #         return None
-    #     quotes = {}
-    #     for k, v in self.meta_summary.items():
-    #         if k.endswith("_quotes"):
-    #             quotes[k[:-7]] = v
-        
-    #     text = ""
-    #     for k, v in self.meta_summary.items():
-    #         if k not in quotes:
-    #             continue
-    #         key = "Overall " + k.capitalize().replace("_", " ")
-    #         value = v if isinstance(v, str) else ", ".join(v)
-    #         text += f"- **{key}**: {value}\n"
-    #         if len(quotes[k]) > 0 and not as_context:
-    #             text += f"\t- **{key} Quotes**:"
-    #             text += "; ".join([f"`{quote}`" for quote in quotes[k]])
-    #             text += "\n"
-    #     return [{
-    #         "id": f"{self.video_id}-meta",
-    #         "text": text,
-    #         "frame_paths": [path for path in self.meta_summary["frame_paths"]],
-    #     }]
-
-    # def get_subgoal_summary_contents(self, title, as_parent=False) -> list:
-    #     for index, summary in enumerate(self.subgoal_summaries):
-    #         if summary["title"] != title:
-    #             continue
-    #         text = ""
-    #         if as_parent:
-    #             ### indicate that this is a parent
-    #             text += f"- **Parent Subgoal**: {summary['title']}\n"
-    #         else:
-    #             ### add the contents
-    #             text += f"- **Subgoal Contents**:\n"
-    #         quotes = {}
-    #         for k, v in summary.items():
-    #             if k.endswith("_quotes"):
-    #                 quotes[k[:-7]] = v
-    #         for k, v in summary.items():
-    #             if k not in quotes:
-    #                 continue
-    #             if as_parent and k != "outcome":
-    #                 continue
-    #             key = k.capitalize().replace("_", " ")
-    #             value = v if isinstance(v, str) else ", ".join(v)
-    #             text += f"\t- **{key}**: {value}\n"
-    #             if len(quotes[k]) > 0 and not as_parent:
-    #                 text += f"\t- **{key} Quotes**:"
-    #                 text += "; ".join([f"`{quote}`" for quote in quotes[k]])
-    #                 text += "\n"
-    #         content = {
-    #             "id": f"{self.video_id}-subgoal-summary-{index}",
-    #             "title": summary["title"],
-    #             "text": text,
-    #             "frame_paths": [path for path in summary["frame_paths"]],
-    #         }
-    #         if as_parent:
-    #             return [content]
-    #         return [content for content in summary["context"]] + [content]
-    #     return []
-
     def get_subgoal_summary_multimodal_contents(self, title) -> list:
         contents = []
         for index, summary in enumerate(self.subgoal_summaries):
