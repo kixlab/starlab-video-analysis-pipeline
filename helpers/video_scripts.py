@@ -135,7 +135,6 @@ def extract_transcript_from_audio_openai(audio_path):
 def process_video(video_link):
     video_title = re.split(r"[/=]", video_link)[-1]
     video_path = os.path.join(DATABASE, f'{video_title}.mp4')
-    subtitles_path = os.path.join(DATABASE, f'{video_title}.en.vtt')
     audio_path = os.path.join(DATABASE, f'{video_title}.mp3')
 
     metadata = download_video(video_link)
