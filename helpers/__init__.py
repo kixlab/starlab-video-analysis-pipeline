@@ -41,7 +41,7 @@ def transcribe_audio(audio_path, granularity=["segment"]):
             file=audio,
             response_format="verbose_json",
             timestamp_granularities=granularity,
-            prompt="Umm, let me think like, hmm... Okay, here's what I'm, like, thinking."
+            # prompt="Umm, let me think like, hmm... Okay, here's what I'm, like, thinking."
         )
         response = response.to_dict()
         return response
