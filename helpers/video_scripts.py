@@ -77,28 +77,6 @@ def extract_frames(video_path):
     video_cap.release()
     return frame_paths
 
-
-# def extract_transcript_from_audio(audio_path):
-#     output_path = audio_path.replace(".mp3", ".alt.json")
-#     raw_transcript = {}
-#     if os.path.exists(output_path):
-#         with open(output_path, 'r') as f:
-#             raw_transcript = json.load(f)
-#     else:
-#         model = whisper.load_model("small.en")
-#         raw_transcript = model.transcribe(audio_path)
-#         with open(output_path, 'w') as f:
-#             json.dump(raw_transcript, f, indent=2)
-
-#     transcript = []
-#     for segment in raw_transcript["segments"]:
-#         transcript.append({
-#             "start": segment["start"],
-#             "finish": segment["end"],
-#             "text": segment["text"],
-#         })
-#     return transcript
-
 def extract_transcript_from_audio_openai(audio_path):
     granularity = ["segment"]
     output_path = audio_path.replace(".mp3", f".{'_'.join(granularity)}.json")
@@ -152,52 +130,6 @@ def extract_transcript_from_audio_openai(audio_path):
             else:
                 start = finish
         
-    return transcript
-
-def extract_transcript(subtitles_path, audio_path):
-    if not os.path.exists(subtitles_path):
-        print(f"Subtitles file '{subtitles_path}' does not exist.")
-        if not os.path.exists(audio_path):
-            print(f"Audio file '{audio_path}' does not exist.")
-            return []
-        transcript = extract_transcript_from_audio(audio_path)
-
-    else:
-        subtitles = webvtt.read(subtitles_path)
-
-        transcript = []
-        for caption in subtitles:
-            lines = caption.text.strip("\n ").split("\n")
-            if len(transcript) == 0:
-                transcript.append({
-                    "start": caption.start,
-                    "finish": caption.end,
-                    "text": "\n".join(lines),
-                })
-                continue
-            last_caption = transcript[len(transcript) - 1]
-
-            new_text = ""
-            for line in lines:
-                if line.startswith(last_caption["text"], 0):
-                    new_line = line[len(last_caption["text"]):-1].strip()
-                    if len(new_line) > 0:
-                        new_text += new_line + "\n"
-                elif len(line) > 0:
-                    new_text += line + "\n"
-            new_text = new_text.strip("\n ")
-            if len(new_text) == 0:
-                transcript[len(transcript) - 1]["finish"] = caption.end
-            else:
-                transcript.append({
-                    "start": caption.start,
-                    "finish": caption.end,
-                    "text": new_text,
-                })
-        
-        for caption in transcript:
-            caption["start"] = str_to_float(caption["start"])
-            caption["finish"] = str_to_float(caption["finish"])
     return transcript
 
 def process_video(video_link):
