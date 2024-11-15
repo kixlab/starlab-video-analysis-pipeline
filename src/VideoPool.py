@@ -279,7 +279,7 @@ class VideoPool:
 
     def generate_alignments(self):
         self.__generate_alignments_1()
-        self.__generate_alignments_baseline_1()
+        # self.__generate_alignments_baseline_1()
 
     def __cluster_v2(self, items, similarity_threshold, item_to_text_f, summarization_f):
         if len(items) == 0:
@@ -383,7 +383,6 @@ class VideoPool:
                     continue
                 subgoal = subgoal_aspect.split("+")[0]
                 aspect = subgoal_aspect.split("+")[1]
-                ### TODO: costly but can try llm
                 ### clustering
                 def __get_notable(links):
                     if len(links) < 1:
@@ -548,7 +547,6 @@ class VideoPool:
                     return summary
                 new_hooks = self.__cluster_v2(links, SIMILARITY_THRESHOLD_HOOK, __link_to_text, __get_hook)
 
-            # combine hooks with the same title
             new_hooks_dict = {}
             for hook in new_hooks:
                 if hook["title"] not in new_hooks_dict:
@@ -585,8 +583,6 @@ class VideoPool:
                     "links": cur_links,
                     "importance": __calculate_hook_importance(cur_links),
                 })
-        
-        ### sort links of hook by importance
         for hook in all_hooks:
             hook["links"] = sorted(hook["links"], key=lambda x: x["importance"], reverse=True)
         return all_hooks
