@@ -13,7 +13,8 @@ client = OpenAI(
 
 SEED = 13774
 TEMPERATURE = 0
-MODEL_NAME = 'gpt-4o-2024-05-13'
+MODEL_NAME = 'gpt-4o-2024-08-06'
+# gpt-4o-2024-08-06
 # gpt-4o
 # gpt-4o-2024-05-13
 # chatgpt-4o-latest
