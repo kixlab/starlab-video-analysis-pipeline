@@ -61,9 +61,9 @@ def get_response(messages, response_format="json_object", retries=1):
             break
         messages.append({"role": "assistant", "content": response.choices[0].message.content})
 
-    print(f"Finish Reason: {finish_reason}")
-    print(f"Usages: {usages}")
-    print(f"Generated Text: {generated_text}")
+    # print(f"Finish Reason: {finish_reason}")
+    # print(f"Usages: {usages}")
+    # print(f"Generated Text: {generated_text}")
 
     if response_format == "json_object":
         try:
@@ -81,7 +81,7 @@ def get_response(messages, response_format="json_object", retries=1):
 
 
 def get_response_pydantic(messages, response_format):
-    print("MESSAGES:", json.dumps(messages, indent=2))
+    # print("MESSAGES:", json.dumps(messages, indent=2))
     completion = client.beta.chat.completions.parse(
         model=MODEL_NAME,
         messages=messages,
@@ -97,7 +97,7 @@ def get_response_pydantic(messages, response_format):
     
     json_response = response.parsed.dict()
 
-    print("RESPONSE:", json.dumps(json_response, indent=2))
+    # print("RESPONSE:", json.dumps(json_response, indent=2))
     return json_response
 
 def get_response_pydantic_with_message(messages, response_format):
