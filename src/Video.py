@@ -103,30 +103,30 @@ class Video:
             })
         return contents
 
-    def get_meta_summary_contents(self, as_context=False) -> list:
-        if self.meta_summary is None:
-            return None
-        quotes = {}
-        for k, v in self.meta_summary.items():
-            if k.endswith("_quotes"):
-                quotes[k[:-7]] = v
+    # def get_meta_summary_contents(self, as_context=False) -> list:
+    #     if self.meta_summary is None:
+    #         return None
+    #     quotes = {}
+    #     for k, v in self.meta_summary.items():
+    #         if k.endswith("_quotes"):
+    #             quotes[k[:-7]] = v
         
-        text = ""
-        for k, v in self.meta_summary.items():
-            if k not in quotes:
-                continue
-            key = "Overall " + k.capitalize().replace("_", " ")
-            value = v if isinstance(v, str) else ", ".join(v)
-            text += f"- **{key}**: {value}\n"
-            if len(quotes[k]) > 0 and not as_context:
-                text += f"\t- **{key} Quotes**:"
-                text += "; ".join([f"`{quote}`" for quote in quotes[k]])
-                text += "\n"
-        return [{
-            "id": f"{self.video_id}-meta",
-            "text": text,
-            "frame_paths": [path for path in self.meta_summary["frame_paths"]],
-        }]
+    #     text = ""
+    #     for k, v in self.meta_summary.items():
+    #         if k not in quotes:
+    #             continue
+    #         key = "Overall " + k.capitalize().replace("_", " ")
+    #         value = v if isinstance(v, str) else ", ".join(v)
+    #         text += f"- **{key}**: {value}\n"
+    #         if len(quotes[k]) > 0 and not as_context:
+    #             text += f"\t- **{key} Quotes**:"
+    #             text += "; ".join([f"`{quote}`" for quote in quotes[k]])
+    #             text += "\n"
+    #     return [{
+    #         "id": f"{self.video_id}-meta",
+    #         "text": text,
+    #         "frame_paths": [path for path in self.meta_summary["frame_paths"]],
+    #     }]
 
     # def get_subgoal_summary_contents(self, title, as_parent=False) -> list:
     #     for index, summary in enumerate(self.subgoal_summaries):
