@@ -51,4 +51,39 @@ Notes:
 - Export environment variable `$OPENAI_API_KEY` with appropriate OPENAI_API_KEY from [OpenAI](https://openai.com/).
 
 
+## Output
+
+Processing results are stored in under `static/results/{task-id}/output.json`.
+
+- Output format for notables/hooks is as follows:
+```python
+{
+    "id": str,
+    "video_id": str,
+    "subgoal": str,
+    "aspect": str,
+    "relation": str,
+    "title": str,
+    "description": str,
+    "comparison": str,
+    "importance": float,
+    "links": [
+        {
+            "id": str,
+            "title": str,
+            "description": str,
+            "reasoning": str,
+            "comparison": str,
+            "subgoal": str,
+            "aspect": str,
+            "relation": str,
+            "other_video_id": str,
+            "importance": float,
+            "uniqueness": float,
+            "other_seconds": float
+        }
+    ]
+}
+```
+
 For any questions please contact: [Bekzat Tilekbay](mailto:tlekbay.b@gmail.com)
