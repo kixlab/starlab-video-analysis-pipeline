@@ -4,7 +4,6 @@ from helpers import get_response_pydantic, get_response_pydantic_with_message, e
 
 INCLUDE_IMAGES = True
 
-### TODO: May need to add images and try again!!
 def get_subgoal_alignments_v4(contents1, contents2, subgoal, task):
     messages = [
         {
