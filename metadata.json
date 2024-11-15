@@ -25,5 +25,16 @@
             "https://www.youtube.com/watch?v=hshPCtAwSuo",
             "https://www.youtube.com/watch?v=KJWlgG68pUw"
         ]
+    },
+    "binary-search": {
+        "title": "How to implement binary search?",
+        "videos": [
+            "https://www.youtube.com/watch?v=tgVSkMA8joQ",
+            "https://www.youtube.com/watch?v=P3YID7liBug",
+            "https://www.youtube.com/watch?v=xrMppTpoqdw",
+            "https://www.youtube.com/watch?v=Uuyv88Tn9iU",
+            "https://www.youtube.com/watch?v=dq9fDmT_CZU",
+            "https://www.youtube.com/watch?v=DE-ye0t0oxE"
+        ]
     }
 }
