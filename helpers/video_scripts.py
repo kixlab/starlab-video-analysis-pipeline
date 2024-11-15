@@ -78,26 +78,26 @@ def extract_frames(video_path):
     return frame_paths
 
 
-def extract_transcript_from_audio(audio_path):
-    output_path = audio_path.replace(".mp3", ".alt.json")
-    raw_transcript = {}
-    if os.path.exists(output_path):
-        with open(output_path, 'r') as f:
-            raw_transcript = json.load(f)
-    else:
-        model = whisper.load_model("small.en")
-        raw_transcript = model.transcribe(audio_path)
-        with open(output_path, 'w') as f:
-            json.dump(raw_transcript, f, indent=2)
+# def extract_transcript_from_audio(audio_path):
+#     output_path = audio_path.replace(".mp3", ".alt.json")
+#     raw_transcript = {}
+#     if os.path.exists(output_path):
+#         with open(output_path, 'r') as f:
+#             raw_transcript = json.load(f)
+#     else:
+#         model = whisper.load_model("small.en")
+#         raw_transcript = model.transcribe(audio_path)
+#         with open(output_path, 'w') as f:
+#             json.dump(raw_transcript, f, indent=2)
 
-    transcript = []
-    for segment in raw_transcript["segments"]:
-        transcript.append({
-            "start": segment["start"],
-            "finish": segment["end"],
-            "text": segment["text"],
-        })
-    return transcript
+#     transcript = []
+#     for segment in raw_transcript["segments"]:
+#         transcript.append({
+#             "start": segment["start"],
+#             "finish": segment["end"],
+#             "text": segment["text"],
+#         })
+#     return transcript
 
 def extract_transcript_from_audio_openai(audio_path):
     granularity = ["segment"]
@@ -210,6 +210,6 @@ def process_video(video_link):
 
     video_frame_paths = extract_frames(video_path)
 
-    subtitles_openai = extract_transcript_from_audio(audio_path)
+    subtitles_openai = extract_transcript_from_audio_openai(audio_path)
 
     return video_title, video_frame_paths, subtitles_openai, metadata
