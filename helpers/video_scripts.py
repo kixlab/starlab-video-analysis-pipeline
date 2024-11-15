@@ -210,6 +210,6 @@ def process_video(video_link):
 
     video_frame_paths = extract_frames(video_path)
 
-    subtitles_openai = extract_transcript_from_audio_openai(audio_path)
+    subtitles_openai = extract_transcript_from_audio(audio_path)
 
     return video_title, video_frame_paths, subtitles_openai, metadata
