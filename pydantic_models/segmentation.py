@@ -4,7 +4,7 @@ from typing import Literal
 class TranscriptMappingSchema(BaseModel):
     index: int = Field(..., title="The index of the sentence in the narration.")
     steps: list[str] = Field(..., title="The list of steps that the sentence is mapped to. If the sentence is not mapped to any step, the list is empty.")
-    relevance: Literal["essential", "optional", "irrelevant"] = Field(..., title="The relevance of the sentence to the task.")
+    relevance: Literal["essential", "irrelevant"] = Field(..., title="The relevance of the sentence to the task.")
 
 class TranscriptAssignmentsSchema(BaseModel):
     assignments: list[TranscriptMappingSchema] = Field(..., title="The mapping of sentences in the narration to steps.")
