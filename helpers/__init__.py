@@ -61,9 +61,9 @@ def get_response(messages, response_format="json_object", retries=1):
             break
         messages.append({"role": "assistant", "content": response.choices[0].message.content})
 
-    # print(f"Finish Reason: {finish_reason}")
-    # print(f"Usages: {usages}")
-    # print(f"Generated Text: {generated_text}")
+    print(f"Finish Reason: {finish_reason}")
+    print(f"Usages: {usages}")
+    print(f"Generated Text: {generated_text}")
 
     if response_format == "json_object":
         try:
