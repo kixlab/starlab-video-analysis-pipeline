@@ -36,5 +36,15 @@
             "https://www.youtube.com/watch?v=dq9fDmT_CZU",
             "https://www.youtube.com/watch?v=DE-ye0t0oxE"
         ]
+    },
+    "muffins": {
+        "title": "How to bake muffins?",
+        "videos": [
+            "https://www.youtube.com/shorts/B-XGIGS4Ipw",
+            "https://www.youtube.com/shorts/fWp5z_YM07Q",
+            "https://www.youtube.com/watch?v=aEFvNsBDCWs",
+            "https://www.youtube.com/watch?v=gN-orgrgvU8",
+            "https://www.youtube.com/watch?v=cZ2KJPGVwNU"
+        ]
     }
 }
