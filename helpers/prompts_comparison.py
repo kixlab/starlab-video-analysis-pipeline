@@ -2,7 +2,7 @@ from pydantic_models.comparison import AlignmentsSchema4
 
 from helpers import get_response_pydantic, get_response_pydantic_with_message, extend_contents
 
-INCLUDE_IMAGES = False
+INCLUDE_IMAGES = True
 
 ### TODO: May need to add images and try again!!
 def get_subgoal_alignments_v4(contents1, contents2, subgoal, task):
@@ -79,14 +79,14 @@ def get_transcript_alignments_v3(contents1, contents2, task):
             "content": [{
                 "type": "text",
                 "text": f"## Previous Video:`\n"
-            }] + extend_contents(contents2, False),
+            }] + extend_contents(contents2, INCLUDE_IMAGES),
         },
         {
             "role": "user",
             "content": [{
                 "type": "text",
                 "text": f"## Current Video:`\n"
-            }] + extend_contents(contents1, False),
+            }] + extend_contents(contents1, INCLUDE_IMAGES),
         },
     ]
 
