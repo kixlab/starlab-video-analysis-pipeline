@@ -48,44 +48,6 @@ def transcribe_audio(audio_path, granularity=["segment"]):
     return None
 
 
-# def get_response(messages, response_format="json_object", retries=1):
-    
-#     generated_text = ""
-#     finish_reason = ""
-#     usages = []
-#     while True:
-#         response = client.chat.completions.create(
-#             model=MODEL_NAME,
-#             messages=messages,
-#             seed=SEED,
-#             temperature=TEMPERATURE,
-#             response_format={
-#                 "type": response_format,
-#             },
-
-#         )
-#         generated_text += response.choices[0].message.content
-#         finish_reason = response.choices[0].finish_reason
-#         usages.append(response.usage)
-
-#         if finish_reason != "length":
-#             break
-#         messages.append({"role": "assistant", "content": response.choices[0].message.content})
-
-#     if response_format == "json_object":
-#         try:
-#             obj = json.loads(generated_text)
-#             keys = list(obj.keys())
-#             if len(keys) == 1:
-#                 return obj[keys[0]]
-#             else:
-#                 return obj
-#         except json.JSONDecodeError:
-#             if retries > 0:
-#                 return get_response(messages, response_format, retries - 1)
-
-#     return generated_text
-
 
 def get_response_pydantic(messages, response_format):
     print("MESSAGES:", json.dumps(messages, indent=2))
