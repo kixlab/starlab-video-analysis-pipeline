@@ -3,15 +3,12 @@ import os
 import json
 
 import cv2
-import webvtt
-
-import whisper
 
 import re
 
 from yt_dlp import YoutubeDL
 
-from helpers import transcribe_audio, segment_into_sentences, str_to_float
+from helpers import transcribe_audio, segment_into_sentences
 
 DATABASE = "static/database"
 
