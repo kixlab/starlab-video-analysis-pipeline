@@ -161,7 +161,7 @@ def parse_args(args):
     parser.add_argument("-t", "--task", dest="task_id", help="Task ID")
     return parser.parse_args(args)
 
-def main(args=["-t", "muffins"]):
+def main(args=["-t", "test"]):
     parsed_args = parse_args(args)
     task_id = parsed_args.task_id
     ds = setup_ds(task_id)
