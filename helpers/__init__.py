@@ -11,7 +11,7 @@ client = OpenAI(
     api_key=API_KEY,
 )
 
-SEED = 13232
+SEED = 13774
 TEMPERATURE = 0
 MODEL_NAME = 'gpt-4o-2024-08-06'
 
@@ -29,7 +29,7 @@ def transcribe_audio(audio_path, granularity=["segment"]):
             file=audio,
             response_format="verbose_json",
             timestamp_granularities=granularity,
-            prompt="Umm, let me think like, hmm... Okay, here's what I'm, like, thinking."
+            prompt="Umm, let me think like, hmm..."
         )
         response = response.to_dict()
         return response
