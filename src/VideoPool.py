@@ -36,7 +36,7 @@ class VideoPool:
         return None
 
     def process_videos(self):
-        self.__process_videos_v4()
+        # self.__process_videos_v4()
         self.__process_videos_v5()
     
     def __process_videos_v5(self):
