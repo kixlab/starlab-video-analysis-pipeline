@@ -13,7 +13,7 @@ def clip_embed_image(image_paths):
     images = torch.cat([preprocess(Image.open(path)).unsqueeze(0) for path in image_paths]).to(device)
     with torch.no_grad():
         image_features = model.encode_image(images)
-    # image_features /= image_features.norm(dim=-1, keepdim=True)
+    image_features /= image_features.norm(dim=-1, keepdim=True)
     return image_features
 
 
