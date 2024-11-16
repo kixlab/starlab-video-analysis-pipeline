@@ -25,7 +25,7 @@ def clip_embed_text(texts):
     embeddings = torch.cat([clip.tokenize([text]) for text in texts]).to(device)
     with torch.no_grad():
         text_features = model.encode_text(embeddings)
-    # text_features /= text_features.norm(dim=-1, keepdim=True)
+    text_features /= text_features.norm(dim=-1, keepdim=True)
     return text_features
 
 def clip_similar_per_text(texts, image_paths, top_k=1):
