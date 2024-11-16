@@ -2,4 +2,4 @@ SIMILARITY_THRESHOLD_NOTABLE = 0.7
 SIMILARITY_THRESHOLD_HOOK = 0.7
 
 PATH = "static/results/"
-META_TITLE = "$meta$"
+META_TITLE = "$ meta $"
