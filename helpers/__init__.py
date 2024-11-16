@@ -29,7 +29,7 @@ def transcribe_audio(audio_path, granularity=["segment"]):
             file=audio,
             response_format="verbose_json",
             timestamp_granularities=granularity,
-            prompt="Umm, let me think like, hmm..."
+            prompt="Umm, let me think like, hmm... Okay, here's what I'm, like, thinking."
         )
         response = response.to_dict()
         return response
@@ -38,7 +38,7 @@ def transcribe_audio(audio_path, granularity=["segment"]):
 
 
 def get_response_pydantic(messages, response_format):
-    print("MESSAGES:", json.dumps(messages, indent=2))
+    # print("MESSAGES:", json.dumps(messages, indent=2))
     completion = client.beta.chat.completions.parse(
         model=MODEL_NAME,
         messages=messages,
@@ -54,7 +54,7 @@ def get_response_pydantic(messages, response_format):
     
     json_response = response.parsed.dict()
 
-    print("RESPONSE:", json.dumps(json_response, indent=2))
+    # print("RESPONSE:", json.dumps(json_response, indent=2))
     return json_response
 
 def get_response_pydantic_with_message(messages, response_format):
