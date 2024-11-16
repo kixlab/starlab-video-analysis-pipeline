@@ -101,10 +101,14 @@ def extend_contents(contents, include_images=False, include_ids=False):
 
 APPROACHES = [
     "approach_1",
+    "approach_2",
+    "approach_3",
 ]
 
 BASELINES = [
     "baseline_1",
+    "baseline_2",
+    "baseline_3",
 ]
 
 def str_to_float(str_time):
