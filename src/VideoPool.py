@@ -337,8 +337,8 @@ class VideoPool:
             for link in links:
                 text = "- **Procedural Content**: " + link["title"] + "\n"
                 text += "\t- Content Description: " + link["description"] + "\n"
-                # text += "\t- Reasoning: " + link['reasoning'] + "\n"
-                # text += "\t- Comparison to Other Tutorials: " + link['comparison'] + "\n"    
+                text += "\t- Reasoning: " + link['reasoning'] + "\n"
+                text += "\t- Comparison to Other Tutorials: " + link['comparison'] + "\n"    
                 contents.append({
                     "type": "text",
                     "text": text
