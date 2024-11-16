@@ -48,9 +48,9 @@ def export(task_id, ds):
     videos = [video.to_dict(short_metadata=True, fixed_subgoals=True) for video in ds.videos]
 
     output = {
-        # "task": ds.task,
+        "task": ds.task,
         "videos": videos,
-        # "subgoal_definitions": ds.subgoals,
+        "subgoal_definitions": ds.subgoals,
         "hooks": {}
     }
 
@@ -161,7 +161,7 @@ def parse_args(args):
     parser.add_argument("-t", "--task", dest="task_id", help="Task ID")
     return parser.parse_args(args)
 
-def main(args=["-t", "test"]):
+def main(args=["-t", "muffins"]):
     parsed_args = parse_args(args)
     task_id = parsed_args.task_id
     ds = setup_ds(task_id)
