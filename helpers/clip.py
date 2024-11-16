@@ -13,7 +13,7 @@ def clip_embed_image(image_paths):
     images = torch.cat([preprocess(Image.open(path)).unsqueeze(0) for path in image_paths]).to(device)
     with torch.no_grad():
         image_features = model.encode_image(images)
-    image_features /= image_features.norm(dim=-1, keepdim=True)
+    # image_features /= image_features.norm(dim=-1, keepdim=True)
     return image_features
 
 
@@ -25,7 +25,7 @@ def clip_embed_text(texts):
     embeddings = torch.cat([clip.tokenize([text]) for text in texts]).to(device)
     with torch.no_grad():
         text_features = model.encode_text(embeddings)
-    text_features /= text_features.norm(dim=-1, keepdim=True)
+    # text_features /= text_features.norm(dim=-1, keepdim=True)
     return text_features
 
 def clip_similar_per_text(texts, image_paths, top_k=1):
