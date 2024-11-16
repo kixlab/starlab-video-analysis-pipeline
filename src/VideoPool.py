@@ -505,8 +505,8 @@ class VideoPool:
             for link in links:
                 text = "- **Procedural Content**: " + link["title"] + "\n"
                 text += "\t- Content Description: " + link["description"] + "\n"
-                #text += "\t- Reasoning: " + link['reasoning'] + "\n"
-                #text += "\t- Comparison to Current Tutorial: " + link['comparison'] + "\n"  
+                # text += "\t- Reasoning: " + link['reasoning'] + "\n"
+                text += "\t- Comparison to Current Tutorial: " + link['comparison'] + "\n"  
                 contents.append({
                     "type": "text",
                     "text": text
@@ -594,8 +594,8 @@ class VideoPool:
             if f"hooks_{approach}" not in self.hooks:
                 self.hooks[f"hooks_{approach}"] = self.__generate_hooks_v2(self.hooks[f"notables_{approach}"])
 
-        for baseline in BASELINES:
-            if f"notables_{baseline}" not in self.hooks:
-                continue
-            if f"hooks_{baseline}" not in self.hooks:
-                self.hooks[f"hooks_{baseline}"] = self.__generate_hooks_v2(self.hooks[f"notables_{baseline}"])
+        # for baseline in BASELINES:
+        #     if f"notables_{baseline}" not in self.hooks:
+        #         continue
+        #     if f"hooks_{baseline}" not in self.hooks:
+        #         self.hooks[f"hooks_{baseline}"] = self.__generate_hooks_v2(self.hooks[f"notables_{baseline}"])
