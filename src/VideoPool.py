@@ -249,37 +249,37 @@ class VideoPool:
                 })
     
     ## BASELINE 1
-    # def __generate_alignments_baseline_1(self):
-    #     approach = BASELINES[0]
-    #     if len(self.videos) < 2:
-    #         return
-    #     if approach in self.alignment_sets and len(self.alignment_sets[approach]) > 0:
-    #         return
+    def __generate_alignments_baseline_1(self):
+        approach = BASELINES[0]
+        if len(self.videos) < 2:
+            return
+        if approach in self.alignment_sets and len(self.alignment_sets[approach]) > 0:
+            return
         
-    #     self.alignment_sets[approach] = []
-    #     for v1_idx, video1 in enumerate(self.videos):
-    #         for v2_idx, video2 in enumerate(self.videos):
-    #             if v1_idx == v2_idx:
-    #                 continue
-    #             ### between meta
-    #             contents1 = video1.get_all_contents()
-    #             contents2 = video2.get_all_contents()
-    #             if len(contents1) == 0 or len(contents2) == 0:
-    #                 continue
-    #             meta_alignments = get_transcript_alignments_v3(
-    #                 contents1, contents2, self.task
-    #             )
-    #             for alignment in meta_alignments:
-    #                 alignment["subgoal_title"] = META_TITLE
+        self.alignment_sets[approach] = []
+        for v1_idx, video1 in enumerate(self.videos):
+            for v2_idx, video2 in enumerate(self.videos):
+                if v1_idx == v2_idx:
+                    continue
+                ### between meta
+                contents1 = video1.get_all_contents()
+                contents2 = video2.get_all_contents()
+                if len(contents1) == 0 or len(contents2) == 0:
+                    continue
+                meta_alignments = get_transcript_alignments_v3(
+                    contents1, contents2, self.task
+                )
+                for alignment in meta_alignments:
+                    alignment["subgoal_title"] = META_TITLE
 
-    #             self.alignment_sets[approach].append({
-    #                 "alignments": self.__reformat_alignments(meta_alignments, video1, video2),
-    #                 "video_id": video1.video_id,
-    #             })
+                self.alignment_sets[approach].append({
+                    "alignments": self.__reformat_alignments(meta_alignments, video1, video2),
+                    "video_id": video1.video_id,
+                })
 
     def generate_alignments(self):
         self.__generate_alignments_1()
-        # self.__generate_alignments_baseline_1()
+        self.__generate_alignments_baseline_1()
 
     def __cluster_v2(self, items, similarity_threshold, item_to_text_f, summarization_f):
         if len(items) == 0:
@@ -505,7 +505,7 @@ class VideoPool:
             for link in links:
                 text = "- **Procedural Content**: " + link["title"] + "\n"
                 text += "\t- Content Description: " + link["description"] + "\n"
-                # text += "\t- Reasoning: " + link['reasoning'] + "\n"
+                text += "\t- Reasoning: " + link['reasoning'] + "\n"
                 text += "\t- Comparison to Current Tutorial: " + link['comparison'] + "\n"  
                 contents.append({
                     "type": "text",
