@@ -48,9 +48,9 @@ def export(task_id, ds):
     videos = [video.to_dict(short_metadata=True, fixed_subgoals=True) for video in ds.videos]
 
     output = {
-        "task": ds.task,
+        # "task": ds.task,
         "videos": videos,
-        "subgoal_definitions": ds.subgoals,
+        # "subgoal_definitions": ds.subgoals,
         "hooks": {}
     }
 
